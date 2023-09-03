@@ -27,27 +27,23 @@ export default class ProductManager {
         return this.products;
     }
 
-    addProduct(title, description, price, thumbnail, code, stock) {
-        const newProduct = {
-            id: this.products.length + 1,
-            title,
-            description,
-            price,
-            thumbnail,
-            code,
-            stock
-        }
+    addProduct(product) {
 
-        const productoExistente = this.products.some((product) => product.code === code);
+        const exitingProduct = this.products.find((prod) => prod.code === product.code);
 
-        if(!title || !description || !price || !thumbnail || !code || !stock) {
+        if (product.title ===undefined ||
+            product.description ===undefined ||
+            product.price ===undefined ||
+            product.thumbnail ===undefined ||
+            product.code ===undefined ||
+            product.stock ===undefined ) {
             console.log("Error! Complete todos los campos por favor")
-        } else if (productoExistente){
+        } else if (exitingProduct){
             return console.error("Error! Producto ya existente");
         } else {
-            this.products.push(newProduct);
+            this.products.push({...product, id: this.products.length +1});
             this.saveProducts();
-            console.log("Producto agregado correctamente", newProduct)
+            console.log("Producto agregado correctamente", product)
         }
     }
 
