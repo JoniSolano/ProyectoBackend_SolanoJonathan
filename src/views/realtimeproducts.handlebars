@@ -1,0 +1,116 @@
+<div class="lista">
+  <div id="dinamic-list">
+    {{#each products}}
+          <div class="card">
+              <div class="title">
+                  <h2>{{title}}</h2>
+              </div>
+              <div class="details">
+                  <div>
+                      <img style="width: 50px; max-height: 50px" src={{thumbnail}}/>
+                  </div>
+                  <div>
+                      <ul class="detail-list">
+                          <li>ID: {{id}}</li>
+                          <li>{{description}}</li>
+                          <li>Código: {{code}}</li>
+                          <li>Stock: {{stock}}</li>
+                          <li>Precio: USD ${{price}}</li>
+                          <li>Status: {{status}}</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      {{/each}}
+  </div>
+
+
+  <div>
+    <form id="productForm">
+      <h2>Agregar Producto</h2>
+      <div>
+        <label for="titleProd">Título</label>
+        <input
+          type="text"
+          name="title"
+          id="titleForm"
+          placeholder="Título"
+          required
+        />
+      </div>
+      <div>
+        <label for="descProd">Descripción</label>
+        <input
+          type="text"
+          name="description"
+          id="descriptionForm"
+          placeholder="Descripción"
+          required
+        />
+      </div>
+      <div>
+        <label for="priceProd">Precio</label>
+        <input
+          type="number"
+          name="price"
+          id="priceForm"
+          placeholder="Precio"
+          required
+        />
+      </div>
+      <div>
+        <label for="codeProd">Código</label>
+        <input
+          type="text"
+          name="code"
+          id="codeForm"
+          placeholder="Código"
+          required
+        />
+      </div>
+      <div>
+        <label for="stockProd">Stock</label>
+        <input
+          type="number"
+          name="stock"
+          id="stockForm"
+          placeholder="Stock"
+          required
+        />
+      </div>
+      <div>
+      <label for="urlInput">Imagen</label>
+      <input
+        type="text"
+        name="thumbnail"
+        id="imgForm"
+        placeholder="Imagen"
+      />
+    </div>
+      <button type="submit">Agregar</button>
+    </form>
+
+
+
+    <form id="deleteProductForm">
+      <h2>Eliminar Producto</h2>
+      <div>
+        <label for="productId">ID del Producto</label>
+        <input
+          type="number"
+          id="productId"
+          name="productId"
+          placeholder="ID del Producto"
+          required
+        />
+      </div>
+      <button type="submit">Eliminar</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/test-socket.js"></script>
