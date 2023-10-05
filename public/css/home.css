@@ -1,0 +1,18 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    width:500px;
+    border: 1px solid lightgray;
+    margin: 10px 0;
+}
+
+.title{
+    background-color: lightgray;
+    margin-bottom: 5px;
+}
+
+.details{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

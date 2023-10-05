@@ -1,0 +1,29 @@
+.lista{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width:900px;
+    border: 1px solid lightgray;
+    margin: 10px 0;
+}
+
+.title{
+    background-color: lightblue;
+    margin-bottom: 5px;
+}
+
+.details{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.detail-list{
+    display: inline-flex;
+    gap: 20px;
+}

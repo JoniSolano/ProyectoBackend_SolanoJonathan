@@ -1,12 +1,12 @@
 import express from 'express';
-const router = express.Router();
+export const productsRouter = express.Router();
 import ProductManager from "../functions/ProductManager.js";
 const productManager = new ProductManager("../products.json");
 
-router.use(express.json());
-router.use(express.urlencoded({extended: true}));
+productsRouter.use(express.json());
+productsRouter.use(express.urlencoded({extended: true}));
 
-router.get('/', async (req, res) => {
+productsRouter.get('/', async (req, res) => {
     let products = await productManager.getProducts();
 
     let limit = req.query.limit
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:pid', async (req, res) => {
+productsRouter.get('/:pid', async (req, res) => {
     const idProduct = req.params.pid;
     let productFound = await productManager.getProductById(parseInt(idProduct));
     if (!productFound) {
@@ -31,7 +31,7 @@ router.get('/:pid', async (req, res) => {
     }
 })
 
-router.post('/', (req, res) => {
+productsRouter.post('/', (req, res) => {
     const prod = req.body;
     productManager.addProduct(prod);
     res.status(200).json({
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
     })
 })
 
-router.put('/:pid', (req, res) => {
+productsRouter.put('/:pid', (req, res) => {
     const idProduct = req.params.pid;
     const prod = req.body;
     productManager.updateProduct(parseInt(idProduct), prod);
@@ -52,7 +52,7 @@ router.put('/:pid', (req, res) => {
     })
 })
 
-router.delete('/:pid', (req, res) => {
+productsRouter.delete('/:pid', (req, res) => {
     const idProduct = req.params.pid;
     let productFound = productManager.getProductById(parseInt(idProduct));
     productManager.deleteProduct(parseInt(idProduct));
@@ -62,5 +62,3 @@ router.delete('/:pid', (req, res) => {
         data: productFound
     })
 })
-
-export default router;

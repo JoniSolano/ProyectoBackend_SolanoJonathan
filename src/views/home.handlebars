@@ -1,0 +1,25 @@
+<div>
+    {{#each products}}
+        <div class="card">
+            <div class="title">
+                <h2>{{title}}</h2>
+            </div>
+            <div class="details">
+                <div>
+                    <img style="width: 150px; max-height: 150px" src={{thumbnail}}/>
+                </div>
+                <div>
+                    <ul>
+                        <li>ID: {{id}}</li>
+                        <li>{{description}}</li>
+                        <li>Código: {{code}}</li>
+                        </li>
+                        <li>Stock: {{stock}}</li>
+                        <li>Precio: USD ${{price}}</li>
+                        <li>Status: {{status}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
